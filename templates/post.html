@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} · {{ site.name }}{% endblock %}
+{% block description %}{{ post.summary }}{% endblock %}
+{% block main_class %}wrap narrow{% endblock %}
+{% block content %}
+<article>
+  <header class="post-head">
+    <a class="back muted" href="/blog/">← All posts</a>
+    <h1>{{ post.title }}{% if post.draft %} <span class="draft">draft</span>{% endif %}</h1>
+    {% if post.summary %}<p class="muted big">{{ post.summary }}</p>{% endif %}
+    <div class="meta mono muted small">
+      <time datetime="{{ post.date.isoformat() }}">{{ post.date.strftime("%b %-d, %Y") }}</time>
+      <span>{{ post.minutes }} min read</span>
+      <span class="chips">{% for t in post.tags %}<a class="chip" href="/blog/#{{ t }}">#{{ t }}</a>{% endfor %}</span>
+    </div>
+  </header>
+  <div class="prose">{{ post.html | safe }}</div>
+</article>
+
+<section class="post-foot" aria-label="More posts">
+  <p class="muted">Thanks for reading. Questions or corrections? <a href="/contact/">Send me a message</a>.</p>
+  {% if post.prev or post.next %}
+  <div class="prev-next">
+    {% if post.prev %}<a class="card" href="{{ post.prev.url }}"><span class="mono muted small">← Previous</span><span class="post-title">{{ post.prev.title }}</span></a>{% else %}<span></span>{% endif %}
+    {% if post.next %}<a class="card right" href="{{ post.next.url }}"><span class="mono muted small">Next →</span><span class="post-title">{{ post.next.title }}</span></a>{% endif %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

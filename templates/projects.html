@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "macros.html" import project_card %}
+{% block title %}Projects · {{ site.name }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>Projects</h1>
+  <p class="muted big">{{ site.projects_intro }}</p>
+</section>
+
+{% if kinds | length > 1 %}
+<div class="filters plain" role="group" aria-label="Filter projects" data-filter="kind">
+  <button type="button" class="pill" aria-pressed="true" data-value="">All</button>
+  {% for k in kinds %}<button type="button" class="pill" aria-pressed="false" data-value="{{ k }}">{{ k }}</button>{% endfor %}
+</div>
+{% endif %}
+
+<div class="grid wide last">
+  {% for p in projects %}{{ project_card(p, posts) }}{% else %}<p class="muted empty">Projects coming soon.</p>{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% macro icon(name, size=16) -%}
+<svg width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- if name == "code" %}<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+{%- elif name == "briefcase" %}<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+{%- elif name == "mail" %}<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/>
+{%- elif name == "arrow" %}<path d="M7 17 17 7M7 7h10v10"/>
+{%- elif name == "doc" %}<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>
+{%- endif %}</svg>
+{%- endmacro %}
+
+{% macro project_card(p, posts={}) -%}
+<article class="card project" data-kind="{{ p.kind }}">
+  <div class="card-head">
+    <h3>{{ p.name }}</h3>
+    {% if p.kind %}<span class="muted mono small">{{ p.kind }}</span>{% endif %}
+  </div>
+  <p class="muted grow">{{ p.desc }}</p>
+  <div class="chips">{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>
+  <div class="card-links">
+    {% if p.code %}<a href="{{ p.code }}">{{ icon("code", 15) }}Code</a>{% endif %}
+    {% if p.demo %}<a href="{{ p.demo }}">{{ icon("arrow", 15) }}Live demo</a>{% endif %}
+    {% if p.post and p.post in posts %}<a href="{{ posts[p.post].url }}">{{ icon("doc", 15) }}Write-up</a>{% endif %}
+  </div>
+</article>
+{%- endmacro %}

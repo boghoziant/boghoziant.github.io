@@ -1,0 +1,32 @@
+# One [[project]] per project. featured = true puts it on the home page (max 3).
+# draft = true hides it unless you build with --drafts. These samples are from the design; replace them.
+
+[[project]]
+name = "docsearch"
+kind = "AI"
+desc = "Question answering over a folder of Markdown docs, with citations back to the source paragraph."
+stack = ["Python", "FastAPI", "pgvector"]
+code = "https://github.com/"
+demo = "https://example.com/"
+post = ""                 # slug of a write-up post, e.g. "retrying-llm-calls"
+featured = true
+draft = true
+
+[[project]]
+name = "evalkit"
+kind = "AI"
+desc = "A small eval harness for prompts: YAML test cases, scored runs, and a CI-friendly exit code."
+stack = ["Python", "pytest", "YAML"]
+code = "https://github.com/"
+featured = true
+draft = true
+
+[[project]]
+name = "queue-lab"
+kind = "Backend"
+desc = "A durable job queue on Postgres using SKIP LOCKED, with retries, backoff and dead-lettering."
+stack = ["Go", "Postgres"]
+code = "https://github.com/"
+post = "retrying-llm-calls"
+featured = true
+draft = true

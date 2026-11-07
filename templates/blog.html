@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Writing · {{ site.name }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>Writing</h1>
+  <p class="muted big">{{ site.blog_intro }}</p>
+</section>
+
+{% if tags %}
+<div class="filters" role="group" aria-label="Filter by tag" data-filter="tags">
+  <button type="button" class="pill" aria-pressed="true" data-value="">All posts</button>
+  {% for tag in tags %}<button type="button" class="pill" aria-pressed="false" data-value="{{ tag }}">#{{ tag }}</button>{% endfor %}
+</div>
+{% endif %}
+
+{% for year, posts in groups %}
+<section class="year-group" data-group>
+  <h2 class="mono muted small year">{{ year }}</h2>
+  <div class="year-posts">
+    {% for post in posts %}
+    <article class="post-item" data-tags="{{ post.tags | join(' ') }}">
+      <a href="{{ post.url }}">
+        <span class="post-item-head">
+          <span class="post-title">{{ post.title }}{% if post.draft %} <span class="draft">draft</span>{% endif %}</span>
+          <time class="mono muted small" datetime="{{ post.date.isoformat() }}">{{ post.date.strftime("%b %-d") }}</time>
+        </span>
+        <span class="muted">{{ post.summary }}</span>
+      </a>
+      <div class="chips">{% for t in post.tags %}<span class="chip">#{{ t }}</span>{% endfor %}</div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<p class="muted empty">No posts yet.</p>
+{% endfor %}
+{% endblock %}

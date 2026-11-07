@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Contact · {{ site.name }}{% endblock %}
+{% block content %}
+{% set c = site.contact %}
+<section class="page-head">
+  <h1>Contact</h1>
+  <p class="muted big">{{ c.intro }}</p>
+</section>
+
+<section class="contact last">
+  {% if c.web3forms_key %}
+  {# Spam layers: hidden honeypot field, hCaptcha, and Web3Forms' own server-side filtering.
+     Without JS the form still posts normally and Web3Forms shows its own thank-you page. #}
+  <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="{{ c.web3forms_key }}">
+    <input type="hidden" name="subject" value="New message from {{ site.logo }}{{ site.logo_suffix }}">
+    <input type="hidden" name="from_name" value="{{ site.name }} website">
+    <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required maxlength="100" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required maxlength="200" autocomplete="email">
+      <span class="hint muted">So I can reply. I won't share it.</span>
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required rows="7" minlength="10" maxlength="5000"></textarea>
+    </div>
+    <div class="h-captcha" data-captcha="true"></div>
+    <div class="form-foot">
+      <button type="submit" class="btn solid">Send message</button>
+      <p class="form-status muted" role="status" aria-live="polite"></p>
+    </div>
+  </form>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+  {% else %}
+  <p class="muted">The contact form isn't set up yet. In the meantime, find me on
+    <a href="{{ site.links.linkedin }}">LinkedIn</a>.</p>
+  {% endif %}
+</section>
+{% endblock %}

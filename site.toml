@@ -1,0 +1,61 @@
+# Everything personal about the site lives here.
+
+name = "Tadeh Boghozian"
+logo = "tadeh"            # shown as tadeh.dev in the header
+logo_suffix = ".dev"
+url = "https://boghoziant.github.io"   # your live URL, used in the RSS feed
+description = "Backend engineer building LLM-powered systems. Writing about what I learn."
+
+tagline = "Backend engineer → applied AI"
+headline = "Hi, I'm Tadeh."
+intro = "I build backend systems, and lately the plumbing that makes LLM features work in production."
+bio = "Right now I build a lead ingestion and matching pipeline with Claude-based classification at CTSS. Before that I spent two years at Walmart Global Tech on a GenAI developer assistant: RAG chatbots and embedding services used by 20,000+ engineers. I write here about what I learn along the way."
+
+blog_intro = "Notes on backend systems, LLMs in production, and what I'm learning as I move deeper into applied AI."
+show_projects = false     # true brings back the Projects page and home section
+projects_intro = "Things I've built to learn, scratch an itch, or run in production."
+
+[links]
+github = "https://github.com/boghoziant"
+linkedin = "https://www.linkedin.com/in/tadehboghozian"
+email = "boghoziant@gmail.com"
+resume = "/static/resume.pdf"   # leave empty to hide the résumé links
+
+[about]
+photo = ""                # e.g. "/static/me.jpg"; leave empty for no photo
+lead = "I'm Tadeh, a backend software engineer in Sunnyvale. I like systems that are simple to reason about and hard to break."
+paragraphs = [
+  "I studied computer science at UCLA, then spent two years at Walmart Global Tech building a GenAI developer assistant: a Python/Flask platform with pluggable LLMs, a RAG chatbot for Slack, and a Java embedding service on Milvus that kept its knowledge fresh.",
+  "Now I'm a contract backend and AI engineer at CTSS, where I built the pipeline that ingests, de-duplicates and classifies job leads with Claude, then routes them to subscribers. The hard parts of shipping LLM features turn out to be mostly backend problems: data quality, latency, cost, and knowing whether a change made things better. This site is where I write about that.",
+]
+contact_teaser = "I'm happy to talk about backend systems, LLM tooling, or roles in applied AI. The contact form is the best way to reach me."
+
+[[about.jobs]]
+role = "Software Engineer, Backend & AI (Contract)"
+org = "CTSS"
+when = "Dec 2025 – now"
+what = "Built the lead ingestion pipeline for a home-services marketplace: Python collectors normalize and de-duplicate leads into Postgres on AWS, Claude classifies them by trade and area, and matching logic routes them to subscribers."
+
+[[about.jobs]]
+role = "Software Engineer II"
+org = "Walmart Global Tech"
+when = "Aug 2023 – Aug 2025"
+what = "Led development of a company-wide GenAI developer assistant. Built a RAG chatbot for Slack serving 20,000+ engineers and a Java/Milvus embedding service that auto-refreshes from distributed sources."
+
+[[about.jobs]]
+role = "Software Engineer Intern"
+org = "Endress+Hauser"
+when = "Jun – Sep 2022"
+what = "Built automated test frameworks in C++ and C# for laser spectrometers, cutting bug detection time by 90%, and set up remote test fixtures for the device team."
+
+[[about.jobs]]
+role = "B.S. Computer Science"
+org = "UCLA"
+when = "2019 – 2023"
+what = "Coursework in operating systems, machine learning, AI, computer vision and graphics."
+
+[contact]
+# Free form backend: get an access key at https://web3forms.com (enter the email
+# messages should go to). The key is safe to publish; it only lets people send you mail.
+web3forms_key = ""
+intro = "Questions about a post, a role in applied AI, or just want to say hi? Send me a message and I'll get back to you."

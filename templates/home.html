@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "macros.html" import icon, project_card %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">{{ site.tagline }}</p>
+  <h1>{{ site.headline }}</h1>
+  <p class="lede">{{ site.intro }}</p>
+  <p class="muted">{{ site.bio }}</p>
+  <div class="buttons">
+    <a class="btn" href="{{ site.links.github }}">{{ icon("code") }}GitHub</a>
+    <a class="btn" href="{{ site.links.linkedin }}">{{ icon("briefcase") }}LinkedIn</a>
+    <a class="btn" href="/contact/">{{ icon("mail") }}Contact</a>
+    {% if site.links.resume %}<a class="btn" href="{{ site.links.resume }}">{{ icon("doc") }}Résumé</a>{% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2 class="label">Latest writing</h2>
+    <a href="/blog/">All posts →</a>
+  </div>
+  {% for post in posts %}
+  <a class="post-row" href="{{ post.url }}">
+    <span class="mono muted small date">{{ post.date.isoformat() }}</span>
+    <span class="post-text">
+      <span class="post-title">{{ post.title }}</span>
+      <span class="muted">{{ post.summary }}</span>
+    </span>
+  </a>
+  {% else %}
+  <p class="muted empty">No posts yet.</p>
+  {% endfor %}
+</section>
+
+{% if site.show_projects and projects %}
+<section class="section last">
+  <div class="section-head">
+    <h2 class="label">Featured projects</h2>
+    <a href="/projects/">All projects →</a>
+  </div>
+  <div class="grid">{% for p in projects %}{{ project_card(p) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% endblock %}

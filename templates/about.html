@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "macros.html" import icon %}
+{% block title %}About · {{ site.name }}{% endblock %}
+{% block content %}
+{% set a = site.about %}
+<section class="about-hero">
+  {% if a.photo %}<img class="photo" src="{{ a.photo }}" alt="{{ site.name }}">{% endif %}
+  <div class="col">
+    <h1>About</h1>
+    <p class="big">{{ a.lead }}</p>
+    {% for para in a.paragraphs %}<p class="muted">{{ para }}</p>{% endfor %}
+  </div>
+</section>
+
+{% if a.jobs %}
+<section class="split">
+  <h2 class="label">Experience</h2>
+  <ol class="col jobs">
+    {% for job in a.jobs %}
+    <li>
+      <div class="job-head">
+        <h3>{{ job.role }} <span class="muted">· {{ job.org }}</span></h3>
+        <span class="mono muted small">{{ job.when }}</span>
+      </div>
+      <p class="muted">{{ job.what }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+<section class="split last">
+  <h2 class="label">Say hello</h2>
+  <div class="col">
+    <p class="muted">{{ a.contact_teaser }}</p>
+    <div class="buttons">
+      <a class="btn solid" href="/contact/">{{ icon("mail") }}Send a message</a>
+      <a class="btn" href="{{ site.links.github }}">GitHub</a>
+      <a class="btn" href="{{ site.links.linkedin }}">LinkedIn</a>
+      {% if site.links.resume %}<a class="btn" href="{{ site.links.resume }}">Résumé (PDF)</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
