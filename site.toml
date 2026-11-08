@@ -8,7 +8,7 @@ description = "Backend engineer building LLM-powered systems. Writing about what
 
 tagline = "Backend engineer → applied AI"
 headline = "Hi, I'm Tadeh."
-intro = "I build backend systems, and lately the plumbing that makes LLM features work in production."
+intro = "I build backend systems and AI features that work in production."
 bio = "Right now I build a lead ingestion and matching pipeline with Claude-based classification at CTSS. Before that I spent two years at Walmart Global Tech on a GenAI developer assistant: RAG chatbots and embedding services used by 20,000+ engineers. I write here about what I learn along the way."
 
 blog_intro = "Notes on backend systems, LLMs in production, and what I'm learning as I move deeper into applied AI."
