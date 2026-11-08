@@ -21,7 +21,6 @@
   </div>
   {% for post in posts %}
   <a class="post-row" href="{{ post.url }}">
-    <span class="mono muted small date">{{ post.date.isoformat() }}</span>
     <span class="post-text">
       <span class="post-title">{{ post.title }}</span>
       <span class="muted">{{ post.summary }}</span>

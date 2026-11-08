@@ -3,7 +3,7 @@
 name = "Tadeh Boghozian"
 logo = "tadeh"            # shown as tadeh.dev in the header
 logo_suffix = ".dev"
-url = "https://boghoziant.github.io"   # your live URL, used in the RSS feed
+url = "https://tadeh.dev"   # your live URL, used in the RSS feed
 description = "Backend engineer building LLM-powered systems. Writing about what I learn."
 
 tagline = "Backend engineer → applied AI"

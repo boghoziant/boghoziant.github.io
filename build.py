@@ -90,6 +90,17 @@ def render_markdown(text):
     return out
 
 
+def post_date(meta, path):
+    """Used only for ordering and the RSS feed; the site never shows it.
+    Front matter date, else a YYYY-MM-DD filename prefix, else the file's modified time."""
+    if meta.get("date"):
+        return date.fromisoformat(meta["date"])
+    m = re.match(r"(\d{4}-\d{2}-\d{2})-", path.name)
+    if m:
+        return date.fromisoformat(m.group(1))
+    return date.fromtimestamp(path.stat().st_mtime)
+
+
 def load_posts(drafts):
     posts = []
     for path in sorted((ROOT / "posts").glob("*.md")):
@@ -101,7 +112,7 @@ def load_posts(drafts):
         posts.append(Post(
             slug=slug,
             title=meta.get("title", slug),
-            date=date.fromisoformat(meta["date"]),
+            date=post_date(meta, path),
             summary=meta.get("summary", ""),
             tags=[t.strip() for t in meta.get("tags", "").split(",") if t.strip()],
             draft=draft,
@@ -117,13 +128,6 @@ def load_posts(drafts):
 def load_projects(drafts):
     projects = tomllib.loads((ROOT / "projects.toml").read_text()).get("project", [])
     return [p for p in projects if drafts or not p.get("draft")]
-
-
-def group_by_year(posts):
-    years = {}
-    for p in posts:
-        years.setdefault(p.date.year, []).append(p)
-    return list(years.items())
 
 
 def write(path, content):
@@ -153,7 +157,7 @@ def main():
 
     page("home.html", "index.html", nav="home", posts=posts[:3],
          projects=[p for p in projects if p.get("featured")][:3])
-    page("blog.html", "blog/index.html", nav="blog", groups=group_by_year(posts), tags=tags)
+    page("blog.html", "blog/index.html", nav="blog", posts=posts, tags=tags)
     for post in posts:
         page("post.html", f"blog/{post.slug}/index.html", nav="blog", post=post)
     if site.get("show_projects"):

@@ -90,7 +90,6 @@ nav a[aria-current] { font-weight: 600; }
 .section-head a { font-size: 15px; text-decoration: none; padding: 10px 0; }
 .label { font: 500 14px var(--mono); color: var(--muted); letter-spacing: 0.02em; }
 .post-row { display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 20px 0; border-bottom: 1px solid var(--border); color: var(--fg); text-decoration: none; }
-.post-row .date { flex: 0 0 120px; padding-top: 3px; }
 .post-text { flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 4px; font-size: 16px; }
 .post-title { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; }
 .post-row:hover .post-title, .post-item a:hover .post-title { color: var(--accent); }
@@ -121,15 +120,10 @@ nav a[aria-current] { font-weight: 600; }
   background: transparent; color: var(--muted); font: 13px var(--mono); cursor: pointer;
 }
 .pill[aria-pressed="true"] { border-color: var(--fg); background: var(--fg); color: var(--bg); }
-.year-group { display: flex; flex-wrap: wrap; gap: 0 48px; padding-top: 40px; }
-.year-group:last-of-type { padding-bottom: 96px; }
-.year { flex: 0 0 120px; margin: 18px 0 8px; font-weight: 500; }
-.year-posts { flex: 999 1 560px; min-width: 0; }
+.post-list { padding: 24px 0 96px; }
 .post-item { padding: 18px 0 22px; border-bottom: 1px solid var(--border); }
 .post-item > a { color: var(--fg); text-decoration: none; display: flex; flex-direction: column; gap: 6px; font-size: 16px; }
-.post-item-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
 .post-item .post-title { font-size: 20px; }
-.post-item time { white-space: nowrap; font-size: 13px; }
 .post-item .chips { margin-top: 10px; }
 [hidden] { display: none !important; }
 

@@ -9,7 +9,6 @@
     <h1>{{ post.title }}{% if post.draft %} <span class="draft">draft</span>{% endif %}</h1>
     {% if post.summary %}<p class="muted big">{{ post.summary }}</p>{% endif %}
     <div class="meta mono muted small">
-      <time datetime="{{ post.date.isoformat() }}">{{ post.date.strftime("%b %-d, %Y") }}</time>
       <span>{{ post.minutes }} min read</span>
       <span class="chips">{% for t in post.tags %}<a class="chip" href="/blog/#{{ t }}">#{{ t }}</a>{% endfor %}</span>
     </div>

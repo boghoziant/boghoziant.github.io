@@ -13,25 +13,19 @@
 </div>
 {% endif %}
 
-{% for year, posts in groups %}
-<section class="year-group" data-group>
-  <h2 class="mono muted small year">{{ year }}</h2>
-  <div class="year-posts">
-    {% for post in posts %}
-    <article class="post-item" data-tags="{{ post.tags | join(' ') }}">
-      <a href="{{ post.url }}">
-        <span class="post-item-head">
-          <span class="post-title">{{ post.title }}{% if post.draft %} <span class="draft">draft</span>{% endif %}</span>
-          <time class="mono muted small" datetime="{{ post.date.isoformat() }}">{{ post.date.strftime("%b %-d") }}</time>
-        </span>
-        <span class="muted">{{ post.summary }}</span>
-      </a>
-      <div class="chips">{% for t in post.tags %}<span class="chip">#{{ t }}</span>{% endfor %}</div>
-    </article>
-    {% endfor %}
-  </div>
+{% if posts %}
+<section class="post-list" data-group>
+  {% for post in posts %}
+  <article class="post-item" data-tags="{{ post.tags | join(' ') }}">
+    <a href="{{ post.url }}">
+      <span class="post-title">{{ post.title }}{% if post.draft %} <span class="draft">draft</span>{% endif %}</span>
+      <span class="muted">{{ post.summary }}</span>
+    </a>
+    <div class="chips">{% for t in post.tags %}<span class="chip">#{{ t }}</span>{% endfor %}</div>
+  </article>
+  {% endfor %}
 </section>
 {% else %}
 <p class="muted empty">No posts yet.</p>
-{% endfor %}
+{% endif %}
 {% endblock %}
